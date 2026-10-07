@@ -16,10 +16,10 @@ export default function LegalModal({ type, onClose }: LegalModalProps) {
       aria-modal="true"
       aria-labelledby="legal-modal-title"
     >
-      <div className="relative w-full max-w-xl max-h-[90vh] overflow-y-auto bg-[#0d1322] border border-neutral-700/80 rounded-2xl p-6 sm:p-8 shadow-2xl text-neutral-200">
+      <div className="relative w-full max-w-xl max-h-[90vh] overflow-y-auto bg-[#151515] border border-white/10 rounded-2xl p-6 sm:p-8 shadow-2xl text-white">
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 text-neutral-400 hover:text-white rounded-lg hover:bg-neutral-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+          className="absolute top-5 right-5 p-2 text-[#A7A7A7] hover:text-white rounded-lg hover:bg-[#1D1D1D] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B7F34A]"
           aria-label="Close dialog"
         >
           <X className="w-5 h-5" />
@@ -27,27 +27,27 @@ export default function LegalModal({ type, onClose }: LegalModalProps) {
 
         {type === 'privacy' && (
           <div>
-            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-emerald-400 mb-1">
-              <ShieldCheck className="w-4 h-4" />
-              <span>Youth Data Protection & Privacy</span>
+            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#B7F34A] mb-1">
+              <ShieldCheck className="w-4 h-4 text-[#B7F34A]" />
+              <span>Youth Data Protection &amp; Privacy</span>
             </div>
             <h2 id="legal-modal-title" className="font-display text-2xl font-bold text-white mb-4">
-              Privacy & Safeguarding Policy
+              Privacy &amp; Safeguarding Policy
             </h2>
-            <div className="space-y-4 text-xs text-neutral-300 leading-relaxed">
+            <div className="space-y-4 text-xs text-[#A7A7A7] leading-relaxed">
               <p>
                 Funngro places teen data protection and privacy at the highest standard. As a platform connecting young people with digital opportunities, strict youth protection principles govern our architecture.
               </p>
-              <div className="p-3.5 rounded-xl bg-neutral-900 border border-neutral-800 space-y-2">
-                <h3 className="font-semibold text-white">Core Protections</h3>
-                <ul className="list-disc pl-4 space-y-1 text-neutral-400">
+              <div className="p-3.5 rounded-xl bg-[#1D1D1D] border border-white/10 space-y-2">
+                <h3 className="font-bold text-white">Core Protections</h3>
+                <ul className="list-disc pl-4 space-y-1 text-[#A7A7A7]">
                   <li>Zero monetization or selling of minor personal data to third-party data brokers.</li>
                   <li>Escrow verification: Rewards are tracked securely with transparent project milestone records.</li>
                   <li>Parental awareness protocols for teenagers aged 14–17.</li>
                   <li>Encryption of student contact details — brands only interact via structured milestone submissions.</li>
                 </ul>
               </div>
-              <p className="text-neutral-400">
+              <p className="text-[#A7A7A7]">
                 For official regulatory inquiries and full policy details, consult official Funngro documentation at funngro.com.
               </p>
             </div>
@@ -56,23 +56,23 @@ export default function LegalModal({ type, onClose }: LegalModalProps) {
 
         {type === 'terms' && (
           <div>
-            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-emerald-400 mb-1">
-              <FileText className="w-4 h-4" />
-              <span>Platform Terms & Fair Opportunity</span>
+            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#B7F34A] mb-1">
+              <FileText className="w-4 h-4 text-[#B7F34A]" />
+              <span>Platform Terms &amp; Fair Opportunity</span>
             </div>
             <h2 id="legal-modal-title" className="font-display text-2xl font-bold text-white mb-4">
               Terms of Service
             </h2>
-            <div className="space-y-4 text-xs text-neutral-300 leading-relaxed">
+            <div className="space-y-4 text-xs text-[#A7A7A7] leading-relaxed">
               <p>
                 Welcome to Funngro 2.0. By accessing this platform as a student, teen, or enterprise brand partner, you agree to fair, transparent engagement standards.
               </p>
-              <div className="p-3.5 rounded-xl bg-neutral-900 border border-neutral-800 space-y-2">
-                <h3 className="font-semibold text-white">Key Guidelines</h3>
-                <ul className="list-disc pl-4 space-y-1 text-neutral-400">
-                  <li><strong>For Youth:</strong> Real deliverables must be original work. Plagiarism or fraudulent claims forfeit rewards and platform standing.</li>
-                  <li><strong>For Brands:</strong> All tasks must be safe, ethical, and age-appropriate. No predatory labor, hazardous requests, or deceptive brand promises.</li>
-                  <li><strong>Timely Payment:</strong> Brands must approve or provide feedback on submitted milestones within guaranteed review cycles.</li>
+              <div className="p-3.5 rounded-xl bg-[#1D1D1D] border border-white/10 space-y-2">
+                <h3 className="font-bold text-white">Key Guidelines</h3>
+                <ul className="list-disc pl-4 space-y-1 text-[#A7A7A7]">
+                  <li><strong className="text-white">For Youth:</strong> Real deliverables must be original work. Plagiarism or fraudulent claims forfeit rewards and platform standing.</li>
+                  <li><strong className="text-white">For Brands:</strong> All tasks must be safe, ethical, and age-appropriate. No predatory labor, hazardous requests, or deceptive brand promises.</li>
+                  <li><strong className="text-white">Timely Payment:</strong> Brands must approve or provide feedback on submitted milestones within guaranteed review cycles.</li>
                 </ul>
               </div>
             </div>
@@ -81,40 +81,40 @@ export default function LegalModal({ type, onClose }: LegalModalProps) {
 
         {type === 'contact' && (
           <div>
-            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-emerald-400 mb-1">
-              <Mail className="w-4 h-4" />
+            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#B7F34A] mb-1">
+              <Mail className="w-4 h-4 text-[#B7F34A]" />
               <span>Connect With Funngro</span>
             </div>
             <h2 id="legal-modal-title" className="font-display text-2xl font-bold text-white mb-4">
-              Contact & Inquiries
+              Contact &amp; Inquiries
             </h2>
-            <div className="space-y-4 text-xs text-neutral-300 leading-relaxed">
+            <div className="space-y-4 text-xs text-[#A7A7A7] leading-relaxed">
               <p>
                 Interested in piloting a brand campaign, partnering as an educational institution, or discussing this redesign concept?
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                <div className="p-3.5 rounded-xl bg-neutral-900 border border-neutral-800">
-                  <div className="text-neutral-400 text-[11px] mb-1">For Brands & Enterprise</div>
-                  <div className="font-semibold text-white">partnerships@funngro.com</div>
-                  <div className="text-[11px] text-emerald-400 mt-1">Campaign design & activation</div>
+                <div className="p-3.5 rounded-xl bg-[#1D1D1D] border border-white/10">
+                  <div className="text-[#A7A7A7] text-[11px] mb-1">For Brands &amp; Enterprise</div>
+                  <div className="font-bold text-white">partnerships@funngro.com</div>
+                  <div className="text-[11px] text-[#B7F34A] mt-1">Campaign design &amp; activation</div>
                 </div>
-                <div className="p-3.5 rounded-xl bg-neutral-900 border border-neutral-800">
-                  <div className="text-neutral-400 text-[11px] mb-1">For Students & Teens</div>
-                  <div className="font-semibold text-white">support@funngro.com</div>
-                  <div className="text-[11px] text-emerald-400 mt-1">Project onboarding & queries</div>
+                <div className="p-3.5 rounded-xl bg-[#1D1D1D] border border-white/10">
+                  <div className="text-[#A7A7A7] text-[11px] mb-1">For Students &amp; Teens</div>
+                  <div className="font-bold text-white">support@funngro.com</div>
+                  <div className="text-[11px] text-[#B7F34A] mt-1">Project onboarding &amp; queries</div>
                 </div>
               </div>
-              <div className="p-3 rounded-lg bg-neutral-900/60 border border-neutral-800 text-[11px] text-neutral-400">
-                Official Headquarters: Mumbai / Bengaluru, India. Public portal: <a href="https://www.funngro.com" target="_blank" rel="noopener noreferrer" className="text-emerald-400 underline">funngro.com</a>
+              <div className="p-3 rounded-lg bg-[#1D1D1D] border border-white/10 text-[11px] text-[#A7A7A7]">
+                Official Headquarters: Mumbai / Bengaluru, India. Public portal: <a href="https://www.funngro.com" target="_blank" rel="noopener noreferrer" className="text-[#B7F34A] hover:underline">funngro.com</a>
               </div>
             </div>
           </div>
         )}
 
-        <div className="mt-6 flex justify-end pt-4 border-t border-neutral-800">
+        <div className="mt-6 flex justify-end pt-4 border-t border-white/10">
           <button
             onClick={onClose}
-            className="px-5 py-2 text-xs font-semibold rounded-lg bg-neutral-800 hover:bg-neutral-700 text-white transition-colors"
+            className="px-5 py-2 text-xs font-semibold rounded-lg bg-transparent hover:bg-white/10 text-white border border-white/20 transition-colors"
           >
             Close
           </button>

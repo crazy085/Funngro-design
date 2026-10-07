@@ -1,0 +1,5 @@
+# Production robots.txt for Funngro 2.0 Concept
+User-agent: *
+Allow: /
+
+Sitemap: https://funngro-design-phi.vercel.app/sitemap.xml

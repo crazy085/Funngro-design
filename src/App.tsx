@@ -64,7 +64,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#080c14] text-neutral-100 selection:bg-emerald-500/30 selection:text-emerald-300">
+    <div className="min-h-screen flex flex-col bg-[#0B0B0B] text-white selection:bg-[#B7F34A] selection:text-[#0B0B0B]">
       {/* SEO Engine */}
       <SEOHead currentRoute={currentRoute} />
 
@@ -86,6 +86,7 @@ export default function App() {
 
         {currentRoute === 'teen' && (
           <TeenView
+            onRouteChange={handleRouteChange}
             onOpenRegisterModal={() => handleOpenTeenRegistration()}
             onSelectOpportunity={(opp) => setSelectedOpportunity(opp)}
           />
@@ -93,6 +94,7 @@ export default function App() {
 
         {currentRoute === 'company' && (
           <CompanyView
+            onRouteChange={handleRouteChange}
             onOpenCampaignModal={handleOpenCampaignModal}
             onOpenContactModal={() => setLegalModalType('contact')}
           />
