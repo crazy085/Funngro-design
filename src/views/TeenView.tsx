@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import {
   ArrowRight,
   Sparkles,
@@ -27,6 +27,7 @@ import {
 } from '../data/funngroData';
 import { OpportunityItem, Route } from '../types';
 import Reveal from '../components/Reveal';
+import teenHeroImg from '../assets/images/teen_creator_workspace_1791308376705.jpg';
 
 interface TeenViewProps {
   onRouteChange?: (route: Route) => void;
@@ -41,9 +42,24 @@ export default function TeenView({
 }: TeenViewProps) {
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [bookmarkedIds, setBookmarkedIds] = useState<string[]>([]);
+  const [bookmarkedIds, setBookmarkedIds] = useState<string[]>(() => {
+    try {
+      const saved = localStorage.getItem('funngro_saved_opps');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
   const [activeUniverseCat, setActiveUniverseCat] = useState<string>('content');
   const [activeJourneyStep, setActiveJourneyStep] = useState<number>(0);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('funngro_saved_opps', JSON.stringify(bookmarkedIds));
+    } catch {
+      // ignore
+    }
+  }, [bookmarkedIds]);
 
   // Skill Matcher State
   const [selectedSkills, setSelectedSkills] = useState<string[]>(['Reels & Video', 'App Testing']);
@@ -65,6 +81,7 @@ export default function TeenView({
     return CONCEPTUAL_OPPORTUNITIES.filter((item) => {
       const matchesCategory =
         selectedFilter === 'all' ||
+        (selectedFilter === 'saved' && bookmarkedIds.includes(item.id)) ||
         item.category.toLowerCase().replace(/\s+/g, '') === selectedFilter;
 
       const matchesSearch =
@@ -75,7 +92,7 @@ export default function TeenView({
 
       return matchesCategory && matchesSearch;
     });
-  }, [selectedFilter, searchQuery]);
+  }, [selectedFilter, searchQuery, bookmarkedIds]);
 
   const currentUniverseItem =
     UNIVERSE_CATEGORIES.find((cat) => cat.id === activeUniverseCat) ||
@@ -166,20 +183,26 @@ export default function TeenView({
           <Reveal delayMs={150} className="lg:col-span-5">
             <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-[#151515] shadow-2xl group">
               <img
-                src="/src/assets/images/teen_creator_workspace_1791308376705.jpg"
+                src={teenHeroImg}
                 alt="Young Indian student focused on digital creative work at a modern desk with a laptop"
                 width={640}
                 height={360}
                 className="w-full h-72 sm:h-80 object-cover group-hover:scale-105 transition-transform duration-500"
                 referrerPolicy="no-referrer"
                 loading="eager"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (!target.src.endsWith('/images/teen_creator_workspace_1791308376705.jpg')) {
+                    target.src = '/images/teen_creator_workspace_1791308376705.jpg';
+                  }
+                }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0B] via-[#0B0B0B]/30 to-transparent"></div>
               <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs text-white">
                 <span className="font-mono text-[11px] font-bold text-[#0B0B0B] bg-[#B7F34A] px-2 py-0.5 rounded">
                   Real Projects · Real Learning
                 </span>
-                <span className="text-[11px] text-[#A7A7A7]">Verified Platform</span>
+                <span className="text-[11px] text-[#A7A7A7]">Youth Platform</span>
               </div>
             </div>
           </Reveal>
@@ -268,6 +291,19 @@ export default function TeenView({
                   >
                     Research
                   </button>
+                  {bookmarkedIds.length > 0 && (
+                    <button
+                      onClick={() => setSelectedFilter('saved')}
+                      className={`px-3 py-1 text-xs font-semibold rounded-lg whitespace-nowrap transition-colors flex items-center gap-1.5 ${
+                        selectedFilter === 'saved'
+                          ? 'bg-[#B7F34A] text-[#0B0B0B]'
+                          : 'text-[#B7F34A] hover:text-white'
+                      }`}
+                    >
+                      <Bookmark className="w-3 h-3 fill-current" />
+                      <span>Saved ({bookmarkedIds.length})</span>
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
@@ -415,7 +451,7 @@ export default function TeenView({
                   </p>
                 </div>
                 <p className="text-xs text-[#68645C] leading-relaxed border-t border-[#171717]/10 pt-5">
-                  Fair, transparent compensation for verified milestone delivery. Learn financial responsibility and build your first savings independently.
+                  Learn financial responsibility as you complete milestones and manage your first earnings independently.
                 </p>
               </div>
             </Reveal>
@@ -435,7 +471,7 @@ export default function TeenView({
                   </p>
                 </div>
                 <p className="text-xs text-[#68645C] leading-relaxed border-t border-[#171717]/10 pt-5">
-                  Graduate beyond theoretical textbooks. Craft a verified track record with tangible work samples you can proudly showcase for college admissions and internships.
+                  Graduate beyond theoretical textbooks. Build practical experience with tangible work samples you can showcase as you grow.
                 </p>
               </div>
             </Reveal>

@@ -70,7 +70,7 @@ export const CONCEPTUAL_OPPORTUNITIES: OpportunityItem[] = [
     conceptualReward: '₹400 – ₹700',
     skills: ['Critical Thinking', 'Survey Synthesis', 'Consumer Insights'],
     description: 'Complete an in-depth survey on regional music discovery habits, college study soundtrack habits, and ad-tolerance thresholds.',
-    deliverable: 'Verified 25-question qualitative survey response',
+    deliverable: 'Completed 25-question qualitative survey response',
     difficulty: 'Beginner'
   }
 ];
@@ -98,7 +98,7 @@ export const TEEN_JOURNEY_STEPS: JourneyStep[] = [
     step: '04',
     title: 'GROW',
     description: 'Use every project to build experience.',
-    keyOutcome: 'Accumulate verified credentials and fair rewards.'
+    keyOutcome: 'Accumulate project experience and practical skills.'
   }
 ];
 
@@ -190,8 +190,8 @@ export const COMPANY_SOLUTIONS: SolutionCategory[] = [
     tagline: 'High-Intent Student Referral Engines',
     description: 'Turn young brand lovers into motivated brand evangelists who introduce their friends, classmates, and family.',
     deliverables: ['Peer referral activations', 'Campus sign-up drives', 'App download sprints'],
-    targetAction: 'Verified active installs and sign-ups with low fraud rate',
-    metricHighlight: 'Zero-spam verified referral attribution'
+    targetAction: 'Active installs and sign-ups with low fraud rate',
+    metricHighlight: 'Accurate referral attribution'
   },
   {
     id: 'sample',
@@ -200,7 +200,7 @@ export const COMPANY_SOLUTIONS: SolutionCategory[] = [
     description: 'Deliver physical products or digital trials directly into young households, hostels, and college student hubs.',
     deliverables: ['Hostel product drop distribution', 'Digital voucher redemptions', 'Post-trial feedback surveys'],
     targetAction: 'Trial experience combined with immediate digital feedback',
-    metricHighlight: 'Targeted distribution to verified age cohorts'
+    metricHighlight: 'Targeted distribution to student age cohorts'
   }
 ];
 
@@ -215,7 +215,7 @@ export const COMPANY_PROCESS = [
     step: '02',
     title: 'ACTIVATE',
     description: 'Connect with the right young audience.',
-    detail: 'Funngro matches verified teen and young talent suited for your specific task.'
+    detail: 'Funngro connects you with teen and young talent suited for your specific task.'
   },
   {
     step: '03',
@@ -227,7 +227,7 @@ export const COMPANY_PROCESS = [
     step: '04',
     title: 'LEARN',
     description: 'Understand the response and outcomes.',
-    detail: 'Review verified deliverables, campaign metrics, and demographic sentiment.'
+    detail: 'Review completed deliverables, campaign metrics, and demographic sentiment.'
   }
 ];
 

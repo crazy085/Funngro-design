@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { X, ShieldCheck, Mail, FileText } from 'lucide-react';
 
 interface LegalModalProps {
@@ -7,6 +7,22 @@ interface LegalModalProps {
 }
 
 export default function LegalModal({ type, onClose }: LegalModalProps) {
+  useEffect(() => {
+    if (!type) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [type, onClose]);
+
   if (!type) return null;
 
   return (
@@ -15,6 +31,9 @@ export default function LegalModal({ type, onClose }: LegalModalProps) {
       role="dialog"
       aria-modal="true"
       aria-labelledby="legal-modal-title"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
     >
       <div className="relative w-full max-w-xl max-h-[90vh] overflow-y-auto bg-[#151515] border border-white/10 rounded-2xl p-6 sm:p-8 shadow-2xl text-white">
         <button
@@ -72,7 +91,7 @@ export default function LegalModal({ type, onClose }: LegalModalProps) {
                 <ul className="list-disc pl-4 space-y-1 text-[#A7A7A7]">
                   <li><strong className="text-white">For Youth:</strong> Real deliverables must be original work. Plagiarism or fraudulent claims forfeit rewards and platform standing.</li>
                   <li><strong className="text-white">For Brands:</strong> All tasks must be safe, ethical, and age-appropriate. No predatory labor, hazardous requests, or deceptive brand promises.</li>
-                  <li><strong className="text-white">Timely Payment:</strong> Brands must approve or provide feedback on submitted milestones within guaranteed review cycles.</li>
+                  <li><strong className="text-white">Timely Feedback:</strong> Brands approve or provide feedback on submitted milestones within structured review timelines.</li>
                 </ul>
               </div>
             </div>

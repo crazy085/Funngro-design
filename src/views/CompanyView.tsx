@@ -26,6 +26,7 @@ import {
 } from '../data/funngroData';
 import { Route } from '../types';
 import Reveal from '../components/Reveal';
+import companyHeroImg from '../assets/images/brand_strategy_workspace_1791308391483.jpg';
 
 interface CompanyViewProps {
   onRouteChange?: (route: Route) => void;
@@ -103,20 +104,26 @@ export default function CompanyView({
           <Reveal delayMs={150} className="lg:col-span-5">
             <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-[#151515] shadow-2xl group">
               <img
-                src="/src/assets/images/brand_strategy_workspace_1791308391483.jpg"
+                src={companyHeroImg}
                 alt="Brand marketing and growth strategy professionals collaborating on youth campaigns"
                 width={640}
                 height={360}
                 className="w-full h-72 sm:h-80 object-cover group-hover:scale-105 transition-transform duration-500"
                 referrerPolicy="no-referrer"
                 loading="eager"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (!target.src.endsWith('/images/brand_strategy_workspace_1791308391483.jpg')) {
+                    target.src = '/images/brand_strategy_workspace_1791308391483.jpg';
+                  }
+                }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0B] via-[#0B0B0B]/30 to-transparent"></div>
               <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs text-white">
                 <span className="font-mono text-[11px] font-bold text-[#0B0B0B] bg-[#B7F34A] px-2 py-0.5 rounded">
                   Real Participation at Scale
                 </span>
-                <span className="text-[11px] text-[#A7A7A7]">Enterprise Verified</span>
+                <span className="text-[11px] text-[#A7A7A7]">Enterprise Platform</span>
               </div>
             </div>
           </Reveal>
@@ -230,7 +237,7 @@ export default function CompanyView({
                 <div className="p-5 rounded-xl bg-[#1D1D1D] border border-white/10 space-y-2">
                   <div className="text-xs font-mono text-[#B7F34A] uppercase font-bold">Analytics Dashboard</div>
                   <div className="text-base font-bold text-white">Clear Outcome Reports</div>
-                  <div className="text-xs text-[#A7A7A7]">Real-time counts of verified submissions, qualitative insights, and completed action milestones.</div>
+                  <div className="text-xs text-[#A7A7A7]">Real-time counts of project submissions, qualitative insights, and completed action milestones.</div>
                 </div>
                 <div className="p-5 rounded-xl bg-[#1D1D1D] border border-white/10 space-y-2">
                   <div className="text-xs font-mono text-[#B7F34A] uppercase font-bold">Direct Export</div>
@@ -306,12 +313,12 @@ export default function CompanyView({
                 <div className="p-3.5 rounded-xl bg-[#1D1D1D] border border-white/10 text-center">
                   <div className="text-[10px] font-mono uppercase text-[#A7A7A7] mb-1">Actions</div>
                   <div className="font-mono text-base sm:text-lg font-bold text-white">{estimatedActions}</div>
-                  <div className="text-[10px] text-[#B7F34A] mt-0.5">Verified Outputs</div>
+                  <div className="text-[10px] text-[#B7F34A] mt-0.5">Project Outputs</div>
                 </div>
                 <div className="p-3.5 rounded-xl bg-[#1D1D1D] border border-white/10 text-center">
                   <div className="text-[10px] font-mono uppercase text-[#A7A7A7] mb-1">Velocity</div>
                   <div className="font-mono text-base sm:text-lg font-bold text-white">{estimatedDays} Days</div>
-                  <div className="text-[10px] text-[#B7F34A] mt-0.5">Fast Turnaround</div>
+                  <div className="text-[10px] text-[#B7F34A] mt-0.5">Turnaround</div>
                 </div>
                 <div className="p-3.5 rounded-xl bg-[#1D1D1D] border border-white/10 text-center">
                   <div className="text-[10px] font-mono uppercase text-[#A7A7A7] mb-1">Campuses</div>
@@ -322,7 +329,7 @@ export default function CompanyView({
             </div>
 
             <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#A7A7A7]">
-              <span>Includes milestone escrow security and compliance checks.</span>
+              <span>Includes structured milestone reviews and quality checks.</span>
               <button
                 onClick={() => onOpenCampaignModal(estimatorObjective)}
                 className="btn-primary px-4 py-2 text-xs font-bold rounded-lg flex items-center gap-1.5 whitespace-nowrap"
@@ -492,7 +499,7 @@ export default function CompanyView({
               How it works
             </h2>
             <p className="text-sm text-[#68645C] mt-2">
-              Structured milestone workflow from brief to verified campaign outcomes.
+              Structured milestone workflow from brief to completed campaign outcomes.
             </p>
           </Reveal>
 
@@ -570,7 +577,7 @@ export default function CompanyView({
               </h2>
 
               <p className="text-base sm:text-lg text-[#A7A7A7] leading-relaxed">
-                Connect with verified young creators, testers, ambassadors, and researchers across India.
+                Connect with young creators, testers, ambassadors, and researchers across India.
               </p>
 
               <div className="pt-2 flex flex-wrap items-center justify-center gap-4">

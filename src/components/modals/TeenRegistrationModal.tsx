@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, CheckCircle2, ArrowRight } from 'lucide-react';
 
 interface TeenRegistrationModalProps {
@@ -21,6 +21,22 @@ export default function TeenRegistrationModal({
   );
   const [hasParentConsent, setHasParentConsent] = useState(true);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        resetAndClose();
+      }
+    };
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -58,6 +74,9 @@ export default function TeenRegistrationModal({
       role="dialog"
       aria-modal="true"
       aria-labelledby="teen-reg-title"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) resetAndClose();
+      }}
     >
       <div className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto bg-[#151515] border border-white/10 rounded-2xl p-6 sm:p-8 shadow-2xl text-white">
         <button
@@ -97,7 +116,7 @@ export default function TeenRegistrationModal({
               Start Your Journey
             </h2>
             <p className="text-xs text-[#A7A7A7] mb-6">
-              Turn your digital curiosity into real experience and verified rewards. No prior corporate experience required.
+              Turn your digital curiosity into real experience and practical skills. No prior corporate experience required.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4 text-xs">
@@ -194,7 +213,7 @@ export default function TeenRegistrationModal({
                     className="mt-0.5 rounded border-white/20 accent-[#B7F34A]"
                   />
                   <span>
-                    I confirm I have parent or guardian awareness to participate in student skill opportunities and receive verified rewards.
+                    I confirm I have parent or guardian awareness to participate in student skill opportunities.
                   </span>
                 </label>
               </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, CheckCircle2, ArrowRight } from 'lucide-react';
 
 interface CompanyCampaignModalProps {
@@ -22,6 +22,22 @@ export default function CompanyCampaignModal({
   const [notes, setNotes] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        resetAndClose();
+      }
+    };
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -44,6 +60,9 @@ export default function CompanyCampaignModal({
       role="dialog"
       aria-modal="true"
       aria-labelledby="company-campaign-title"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) resetAndClose();
+      }}
     >
       <div className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto bg-[#151515] border border-white/10 rounded-2xl p-6 sm:p-8 shadow-2xl text-white">
         <button
@@ -83,7 +102,7 @@ export default function CompanyCampaignModal({
               Launch a Youth Campaign
             </h2>
             <p className="text-xs text-[#A7A7A7] mb-6">
-              Connect your brand with young India through authentic, verified actions.
+              Connect your brand with young India through authentic youth participation.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4 text-xs">

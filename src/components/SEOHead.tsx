@@ -11,12 +11,12 @@ const OG_IMAGE_URL = 'https://funngro-design-phi.vercel.app/og-image.jpg';
 const META_CONFIG: Record<Route, { title: string; description: string; canonicalUrl: string }> = {
   gateway: {
     title: 'Funngro | Real Opportunities for Teens & Youth',
-    description: 'Funngro connects ambitious Indian teens with real work opportunities and helps leading companies engage youth through verified campaigns.',
+    description: 'Funngro connects ambitious Indian teens with real work opportunities and helps leading companies engage youth through practical campaigns.',
     canonicalUrl: `${PRODUCTION_DOMAIN}/`
   },
   teen: {
     title: 'Online Opportunities for Teens in India | Funngro',
-    description: 'Find verified online projects in content creation, app testing, and market research. Build practical digital skills, earn real rewards, and work on your own schedule.',
+    description: 'Find online projects in content creation, app testing, and market research. Build practical digital skills and work on your own schedule.',
     canonicalUrl: `${PRODUCTION_DOMAIN}/teen`
   },
   company: {

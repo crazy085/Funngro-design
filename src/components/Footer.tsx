@@ -37,7 +37,7 @@ export default function Footer({
               </span>
             </div>
             <p className="text-[#A7A7A7] text-sm leading-relaxed max-w-sm">
-              Where young ambition meets real opportunity. Empowering India&apos;s next generation with practical skills, verified projects, and real rewards, while helping leading brands activate youth through authentic action.
+              Where young ambition meets real opportunity. Empowering India&apos;s next generation with practical skills and projects, while helping leading brands activate youth through authentic action.
             </p>
             <div className="flex items-center gap-3 pt-2">
               <button

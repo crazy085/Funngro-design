@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { OpportunityItem } from '../../types';
 import { X, CheckCircle, Clock, ShieldCheck, ArrowRight } from 'lucide-react';
 
@@ -13,6 +13,22 @@ export default function OpportunityDetailModal({
   onClose,
   onApply
 }: OpportunityDetailModalProps) {
+  useEffect(() => {
+    if (!opportunity) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [opportunity, onClose]);
+
   if (!opportunity) return null;
 
   return (
@@ -21,6 +37,9 @@ export default function OpportunityDetailModal({
       role="dialog"
       aria-modal="true"
       aria-labelledby="opp-detail-title"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
     >
       <div className="relative w-full max-w-xl max-h-[90vh] overflow-y-auto bg-[#151515] border border-white/10 rounded-2xl p-6 sm:p-8 shadow-2xl text-white">
         <button
@@ -90,8 +109,8 @@ export default function OpportunityDetailModal({
           <div className="p-3 rounded-xl bg-[#1D1D1D] border border-white/10 flex items-start gap-2.5 text-xs text-[#A7A7A7]">
             <ShieldCheck className="w-4 h-4 text-[#B7F34A] shrink-0 mt-0.5" />
             <div>
-              <strong className="font-bold text-white block mb-0.5">Verified Safe Opportunity</strong>
-              All teen tasks adhere to Funngro&apos;s age-appropriate student safety guidelines. Earnings are held in escrow and released upon client acceptance.
+              <strong className="font-bold text-white block mb-0.5">Student Safety Framework</strong>
+              All teen tasks adhere to Funngro&apos;s age-appropriate student safety guidelines and structured milestone reviews.
             </div>
           </div>
         </div>
